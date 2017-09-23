@@ -29,6 +29,7 @@
 	/* This recipe is to be used with the Jeopardy Handout: http://bit.ly/1bvnvd4 */
 
 	public class Jeopardy implements ActionListener {
+		String question = "";
 		private JButton firstButton;
 		private JButton secondButton;
 		private JButton thirdButton, fourthButton;
@@ -60,13 +61,13 @@
 frame.add(quizPanel);
 			
 			// 6. Use the createButton method to set the value of firstButton 
-		JButton firstButton=createButton("100");
+		firstButton=createButton("100");
 		// 7. Add the firstButton to the quizPanel
 			quizPanel.add(firstButton);
 			// 8. Write the code inside the createButton() method below. Check that your game looks like Figure 1 in the Jeopardy Handout - http://bit.ly/1bvnvd4.
 			
 			// 9. Use the secondButton variable to hold a button using the createButton method
-			JButton secondButton=createButton("200");
+			secondButton=createButton("200");
 			// 10. Add the secondButton to the quizPanel
 			quizPanel.add(secondButton);
 			// 11. Add action listeners to the buttons (2 lines of code)
@@ -106,10 +107,13 @@ secondButton.addActionListener(this);
 			//JOptionPane.showMessageDialog(null,"pressed " + ((JButton)arg0.getSource()).getText() + " button");
 
 			// Use the method that plays the jeopardy theme music.
-			playJeopardyTheme();
+			//playJeopardyTheme();
 			JButton buttonPressed = (JButton) arg0.getSource();
+			System.out.println(buttonPressed);
+			System.out.println(firstButton);
 			// If the buttonPressed was the firstButton
-			if (buttonPressed==(firstButton)){
+			if (buttonPressed.equals(firstButton)){
+		
 				askQuestion("In computer terminology, what is a nibble?", "Half a byte", 100 );
 			}
 				// Call the askQuestion() method
@@ -117,7 +121,7 @@ secondButton.addActionListener(this);
 				// Fill in the askQuestion() method. When you play the game, the score should change.
 			
 			// Or if the buttonPressed was the secondButton
-if(buttonPressed==(secondButton)) {
+if(buttonPressed.equals(secondButton)) {
 	askQuestion("Apiology is the study of what?", "Honey Bees", 200);
 }
 
@@ -130,11 +134,11 @@ if(buttonPressed==(secondButton)) {
 		}
 
 		private void askQuestion(String question, String correctAnswer, int prizeMoney) {
-			
+			//System.out.println("question asked");
 			// Use a pop up to ask the user the question
 		String answer=JOptionPane.showInputDialog(question);
 			// If the answer is correct
-			if (answer.equals(correctAnswer)) {
+			if (answer.equalsIgnoreCase(correctAnswer)) {
 				// Increase the score by the prizeMoney
 				score+=prizeMoney;
 				// Call the updateScore() method
@@ -154,7 +158,8 @@ if(buttonPressed==(secondButton)) {
 				updateScore();
 			
 		}
-
+		
+		
 
 	public void playJeopardyTheme() {
 			try {
