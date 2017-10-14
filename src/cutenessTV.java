@@ -1,5 +1,9 @@
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class cutenessTV {
+	JFrame cutenessFrame=new JFrame();
+	JPanel panel = new JPanel();
 	
 	void showDucks() {
 		playVideo("Drirjl5K9Yk");
