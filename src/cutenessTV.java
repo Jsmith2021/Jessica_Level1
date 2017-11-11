@@ -1,3 +1,5 @@
+
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URI;
 
@@ -6,65 +8,65 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class cutenessTV implements ActionListener {
-	JFrame cutenessFrame;
-	JPanel panel;
-	JButton ducks;
-	JButton frogs;
-	JButton unicorns;
-	
+	JFrame cutenessFrame = new JFrame();
+	JPanel panel = new JPanel();
+	JButton ducks = new JButton("Ducks");
+	JButton frogs = new JButton("Frogs");
+	JButton unicorns = new JButton("Unicorns");
+
 	public static void main(String[] args) {
-		cutenessFrame.setVisible(true);
-		cutenessFrame.add(ducks, cutenessFrame);
-		cutenessFrame.add(frogs, cutenessFrame);
-		cutenessFrame.add(unicorns, cutenessFrame);
+		cutenessTV cute = new cutenessTV();
+		cute.createUI();
+
+	}
+
+	public void createUI() {
+		cutenessFrame.add(panel);
+		panel.add(ducks);
+		panel.add(frogs);
+		panel.add(unicorns);
+		ducks.addActionListener(this);
+		frogs.addActionListener(this);
+		unicorns.addActionListener(this);
 		cutenessFrame.setTitle("Cuteness TV!");
-		ducks.setName("Click here to watch a duck video!");
-		frogs.setName("Click here to watch a frog video!");
-		unicorns.setName("Click here to watch a unicorn video!");
+		cutenessFrame.setVisible(true);
+		cutenessFrame.pack();
+
 	}
 
-	
 	void showDucks() {
-		playVideo("Drirjl5K9Yk");
+		playVideo("oMQI0bJJOvM");
 	}
 
-	void showFrog() {
-		playVideo("aSjCb-FfxhI");
+	void showFrogs() {
+		playVideo("_9Pwyp7aVPI&t=20s");
 	}
-	
+
 	void showFluffyUnicorns() {
 		playVideo("qRC4Vk6kisY");
 	}
 
 	void playVideo(String videoID) {
 		try {
-	URI uri = new URI("https://www.youtube.com/watch?v=" + videoID);
+			URI uri = new URI("https://www.youtube.com/watch?v=" + videoID);
 			java.awt.Desktop.getDesktop().browse(uri);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
-	public void createUI(){
-		new cutenessTV().createUI();
-		JPanel panel = new JPanel();
-		JButton ducks = new JButton();
-		JButton frogs = new JButton();
-		JButton unicorns = new JButton();
-		
-		
-		
-	}
-	public void ActionPreformed (ActionEvent e) {
-		if(e.getSource==ducks) {
-			System.out.println("button pressed");
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == ducks) {
+			showDucks();
 		}
-		if(e.getSource==frogs) {
-			System.out.println("button pressed");
+		if (e.getSource() == frogs) {
+			showFrogs();
 		}
-		if(e.getSource==unicorns) {
-			System.out.println("button pressed");
+		if (e.getSource() == unicorns) {
+			showFluffyUnicorns();
 		}
-	}
 	}
 
+}
