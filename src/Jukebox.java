@@ -1,5 +1,6 @@
 
 // Copyright The League of Amazing Programmers, 2015
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -19,17 +20,23 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /* 1. Download the JavaZoom jar from here: http://bit.ly/javazoom
  * 2. Right click your project and add it as an External JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
+public class Jukebox implements ActionListener, Runnable {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
-	JButton song = new JButton();
-	JButton stopsong = new JButton();
-	JButton song2 = new JButton();
-	JButton song3 = new JButton();
+	JButton song = new JButton("Eye of the Tiger by Survivor");
+	JButton song2 = new JButton("The Final Countdown by Europe");
+	JButton song3 = new JButton("Havana by Camila Cabello");
+	Song s = new Song("Europe - The Final Countdown(with lyrics).mp3");
+	Song s2= new Song("Eye of the tiger -Lyrics-.mp3");
+	Song s3= new Song("Havana.mp3");
 
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Jukebox());
-	}
+		Jukebox music = new Jukebox();
+		music.run();
+		}
+
+	
 
 	public void run() {
 
@@ -48,13 +55,11 @@ public class Jukebox implements Runnable {
 		panel.add(song);
 		panel.add(song2);
 		panel.add(song3);
-		panel.add(stopsong);
 		frame.setVisible(true);
 		frame.pack();
-		song.addActionListener((ActionListener) this);
-		song2.addActionListener((ActionListener) this);
-		song3.addActionListener((ActionListener) this);
-		stopsong.addActionListener((ActionListener) this);
+		song.addActionListener(this);
+		song2.addActionListener(this);
+		song3.addActionListener(this);
 		frame.setTitle("Jukebox");
 	}
 
@@ -63,6 +68,32 @@ public class Jukebox implements Runnable {
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if (e.getSource() == song) {
+		s.play();
+		s2.stop();
+		s3.stop();
+		}
+		if (e.getSource() == song2) {
+		s2.play();
+		s.stop();
+		s3.stop();
+		}
+		if (e.getSource() == song3) {
+		s3.play();
+		s.stop();
+		s2.stop();
+		
+		}
+		
+		
+		
 	}
 
 }
