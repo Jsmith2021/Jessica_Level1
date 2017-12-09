@@ -24,7 +24,7 @@ public class CowTimer {
 			System.out.println(minutes);
 		}
 
-		Thread.sleep(1000);
+		Thread.sleep(60000);
 		playSound("moo.wav");
 
 	}
