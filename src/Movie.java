@@ -3,8 +3,12 @@ public class Movie implements Comparable<Movie> {
 
 	private String title;
 	private int stars;
+	
+		
+	
 
 	public Movie(String title, int stars) {
+		
 		this.title = title;
 		this.stars = stars;
 	}
@@ -29,6 +33,7 @@ public class Movie implements Comparable<Movie> {
 		} else {
 			return "Don't waste your money on this horrible rubbish.";
 		}
+		
 	}
 
 	public int compareTo(Movie otherMovie) {
@@ -37,4 +42,6 @@ public class Movie implements Comparable<Movie> {
 		// return this.stars - compareQuantity; //ascending order
 		return compareQuantity - this.stars; // descending order
 	}
+
 }
+
