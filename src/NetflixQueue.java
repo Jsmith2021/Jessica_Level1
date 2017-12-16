@@ -13,6 +13,8 @@ public class NetflixQueue {
 
 	public void addMovie(Movie movie) {
 		movies.add(movie);
+		
+
 	}
 
 	public Movie getMovie(int movieNumber) {
