@@ -27,5 +27,9 @@ System.out.println(movie3);
 System.out.println(movie4);
 System.out.println(movie5);
 
+System.out.println("The best movie is..."+ movie4);
+System.out.println("The second best movie is..."+ movie3);
+
+
 	}
 }
