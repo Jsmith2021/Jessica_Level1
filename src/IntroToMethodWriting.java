@@ -44,7 +44,7 @@ public static int add(int number, int number1) {
 	
 }
 public static boolean isEven(int even) {
-	if(even==2) {
+	if(even==2%4) {
 		return true;
 		
 	}
