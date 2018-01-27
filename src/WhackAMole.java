@@ -1,8 +1,12 @@
+import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
+import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -10,27 +14,63 @@ import javax.swing.JTextField;
 	public class WhackAMole implements ActionListener {
 		JFrame WhackAMole = new JFrame();
 		JPanel panel = new JPanel();
-		JButton button=new JButton();
-	
-		public static void main(String[] args) {
-			WhackAMole mole = new WhackAMole();
-			mole.createUI();
+		JButton mole=new JButton("Mole");
+		
 
+		public static void main(String[] args) {
+			int r=new Random().nextInt(24);
+			new WhackAMole().createUI(r);
+			
+			
 		}
-	public void createUI() {
+		
+	public void createUI(int random) {
+		WhackAMole.setSize(250, 300);
+		WhackAMole.setVisible(true);
+		WhackAMole.setTitle("Whack a Button for Fame and Glory");
 		WhackAMole.add(panel);
-		panel.add(button);
-		WhackAMole.setSize(800,300);
+		mole.addActionListener(this);
+		for(int i=0;i<24;i++) {
+			if(i==random) {
+				panel.add(mole);
+			}
+			else {
+			JButton button=new JButton();
+			panel.add(button);
+			button.addActionListener(this);
+			
+		}
+		}
 	}
+	void speak(String words) {
+		try {
+		Runtime.getRuntime().exec("say " + words).waitFor();
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+		}
 	
-	for(int i; i<25; i++) {
-		JButton button =new JButton();
-	}
+
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		if (e.getSource()==mole) {
+			WhackAMole.dispose();
+			int a=new Random().nextInt(24);
+			new WhackAMole().createUI(a);
+				
+		}
+			else {
+			speak("You are a dork");
+			
+		}
 	}
+	private void endGame(Date timeAtStart, int molesWhacked) {
+		Date timeAtEnd = new Date();
+		JOptionPane.showMessageDialog(null, "Your whack rate is "
+		+ ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked) + " moles per second.");
+		}
 
+	
 }
