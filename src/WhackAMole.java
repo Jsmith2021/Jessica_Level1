@@ -1,9 +1,11 @@
+import java.applet.AudioClip;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.Random;
 
+import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,6 +17,9 @@ import javax.swing.JTextField;
 		JFrame WhackAMole = new JFrame();
 		JPanel panel = new JPanel();
 		JButton mole=new JButton("Mole");
+		int molesWhacked=10;
+		Date timeAtStart = new Date();
+
 		
 
 		public static void main(String[] args) {
@@ -39,17 +44,23 @@ import javax.swing.JTextField;
 			panel.add(button);
 			button.addActionListener(this);
 			
+			
 		}
 		}
 	}
 	void speak(String words) {
 		try {
-		Runtime.getRuntime().exec("say " + words).waitFor();
+		Runtime.getRuntime().exec("Say " + words).waitFor();
 		} catch (Exception e) {
 		e.printStackTrace();
 		}
 		}
 	
+	private void playSound(String fileName) {
+		AudioClip sound = JApplet.newAudioClip(getClass().getResource(fileName));
+		sound.play();
+	}
+
 
 
 	@Override
@@ -59,13 +70,25 @@ import javax.swing.JTextField;
 			WhackAMole.dispose();
 			int a=new Random().nextInt(24);
 			new WhackAMole().createUI(a);
-				
-		}
-			else {
-			speak("You are a dork");
+			playSound("soundcloud.com:.webloc");
+			
 			
 		}
-	}
+		else { 
+		speak("You are a dork");
+		speak("You are a moron");
+		speak("You are a complete waste of atoms");
+			
+		}
+		
+		if(molesWhacked==10) {
+			endGame(timeAtStart, 10);
+		}
+		
+		
+		}
+	
+	
 	private void endGame(Date timeAtStart, int molesWhacked) {
 		Date timeAtEnd = new Date();
 		JOptionPane.showMessageDialog(null, "Your whack rate is "
