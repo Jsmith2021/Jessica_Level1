@@ -59,6 +59,7 @@
 			window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			window.setVisible(true);
 			window.setSize(WIDTH, HEIGHT);	
+			
 		}
 		
 		@Override 
@@ -68,6 +69,7 @@
 			g.drawImage(leftImage, 10, 250, 160, 160, null);
 			g.drawImage(centerImage, 170, 250, 160, 160, null);
 			g.drawImage(rightImage, 330, 250, 160, 160, null);
+			
 		}
 
 		public void actionPerformed(ActionEvent e) {
