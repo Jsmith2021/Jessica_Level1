@@ -8,7 +8,7 @@ public class RobotArmy {
 		
 
 		//2. create a new Robot army of good and evil robots.
-Robot army=new Robot("R2D2", true);
+Robot2 army=new Robot2("R2D2", true);
 		
 		//3. command your robot army to destroy a human
 	army.destroy(human1);
@@ -37,11 +37,11 @@ class Human {
 /**
  * Robot Class
  */
-class Robot {
+class Robot2 {
 	boolean isEvil;
 	String name;
 	
-	public Robot(String name, boolean isEvil){
+	public Robot2(String name, boolean isEvil){
 		this.name = name;
 		this.isEvil = isEvil;
 	}
