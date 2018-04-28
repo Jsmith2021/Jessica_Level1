@@ -43,8 +43,9 @@ public void actionPerformed(ActionEvent e) {
 		else {
 			System.out.println("You got the wrong answer!");
 		}
-	}
 	
+
+}	
 	
 }
 
