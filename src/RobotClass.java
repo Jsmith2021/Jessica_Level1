@@ -49,6 +49,7 @@ public class RobotClass {
 		robot1.move(1000);
 	}
 		if(this.shape.equals("triangle")){
+			robot1.penDown();
 			robot1.move(20);
 			robot1.turn(60);
 			robot1.move(20);
@@ -57,6 +58,7 @@ public class RobotClass {
 		}
 		if(this.shape.equals("circle")) {
 			for(i=0; i<360; i++) {
+				robot1.penDown();
 				robot1.move(1);
 				robot1.turn(1);
 			}
@@ -64,6 +66,7 @@ public class RobotClass {
 			}
 			else {
 				for(i=0; i<4; i++) {
+					robot1.penDown();
 					robot1.move(20);
 					robot1.turn(90);
 				}
