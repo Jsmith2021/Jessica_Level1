@@ -29,7 +29,6 @@ public class Test implements ActionListener {
 		frame.setTitle("My Shopping List");
 		panel.add(label);
 		button.addActionListener(this);
-		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		frame.pack();
 	}
 
