@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,31 +13,31 @@ import javax.swing.JTextField;
 public class Test implements ActionListener {
 	JPanel panel = new JPanel();
 	JFrame frame = new JFrame();
+	JTextField textfield = new JTextField(10);
 	JButton button = new JButton("Submit");
-	JTextField textfield = new JTextField();
 	JLabel label = new JLabel("Submitted:");
 
 	public static void main(String[] args) {
-		int r = new Random().nextInt();
-		new Test().createUI(r);
+		new Test().createUI();
 	}
 
-	public void createUI(int random) {
+	public void createUI() {
 		frame.setVisible(true);
-		frame.pack();
 		frame.add(panel);
+		panel.add(textfield);
 		panel.add(button);
 		frame.setTitle("My Shopping List");
 		panel.add(label);
-		panel.add(textfield);
 		button.addActionListener(this);
+		panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+		frame.pack();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		textfield.setText(createUI(label.getText()+"/n-"text.getText()));
-		System.out.println(createUI(label.getText()));
+		label.setText(("\n"+label.getText()+"\n"+textfield.getText()));
+		System.out.println((textfield.getText()));
 	}
 
 }
